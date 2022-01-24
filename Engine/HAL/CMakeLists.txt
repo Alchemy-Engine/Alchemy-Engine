@@ -1,0 +1,8 @@
+SET(HAL)
+
+
+AUX_SOURCE_DIRECTORY(. Src)
+
+ADD_LIBRARY(HAL STATIC 
+    ${Src}
+)
