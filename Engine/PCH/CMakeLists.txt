@@ -1,0 +1,5 @@
+SET(PCH)
+
+ADD_LIBRARY( PCH STATIC
+    pch.cc
+)

@@ -1,0 +1,2 @@
+
+#define ENGINE_ROOT_DIR L"${ENGINE_ROOT_DIR}"
