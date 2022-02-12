@@ -49,8 +49,7 @@ void Logger::Log(const WCHAR* fmt, ...)
     }
     else
     {
-        // MessageBox(0, L"Unable to open log file ...", L"Log Error", MB_OK);
-        MessageBox(0, logFilePath.c_str(), L"Log Error", MB_OK);
+        MessageBox(0, L"Unable to open log file ...", L"Log Error", MB_OK);
     }
 }
 
