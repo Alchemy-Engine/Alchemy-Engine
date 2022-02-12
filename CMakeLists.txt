@@ -42,6 +42,3 @@ target_link_libraries(Alchemy PRIVATE
     Window
     HAL_Windows
 )
-
-
-
