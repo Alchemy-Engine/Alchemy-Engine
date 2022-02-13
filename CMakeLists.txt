@@ -30,6 +30,10 @@ set(ENGINE_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
 configure_file(config.h.in config.h)
 
+# add assimp
+add_subdirectory(${CMAKE_SOURCE_DIR}/ThirdParty/assimp)
+include_directories(${CMAKE_SOURCE_DIR}/ThirdParty/assimp/include)
+
 add_subdirectory(Engine)
 
 add_executable(Alchemy WIN32 "Engine/main.cc")
@@ -41,4 +45,6 @@ target_link_libraries(Alchemy PRIVATE
     Time
     Window
     HAL_Windows
+
+    assimp
 )
