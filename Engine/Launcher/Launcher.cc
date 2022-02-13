@@ -40,10 +40,12 @@ void EngineInit()
 void EngineLoop()
 {
     MSG msg = { 0 };
-    while ( msg.message != WM_QUIT )
+    while ( true )
     {
         if ( PeekMessage(&msg, 0, 0, 0, PM_REMOVE) )
         {
+            if (msg.message == WM_QUIT)
+                break;
             TranslateMessage(&msg);
             DispatchMessage(&msg);
         }
@@ -58,6 +60,7 @@ void EngineExit()
 {
     GEngine->Exit();
     delete GEngine;
+    Logger::Log(L"Stop Engine");
 }
 
 } // namespace Alchemy

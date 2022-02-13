@@ -104,6 +104,13 @@ LRESULT Window::AssignMessageHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM 
 
 LRESULT Window::MessageHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
+    switch ( msg )
+    {
+        case WM_DESTROY:
+            PostQuitMessage(0);
+            return 0;
+    }
+
     return DefWindowProc(hWnd, msg, wParam, lParam);
 }
 

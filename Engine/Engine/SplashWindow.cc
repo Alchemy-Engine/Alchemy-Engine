@@ -20,7 +20,7 @@ SplashWindow::SplashWindow()
 
 SplashWindow::~SplashWindow()
 {
-
+    DestroyWindow(mHandle);
 }
 
 
@@ -101,6 +101,8 @@ LRESULT SplashWindow::MessageHandler(HWND hWnd, UINT message, WPARAM wParam, LPA
         TextOut(hdc, mWidth / 2, mHeight - 30, splashMessage, wcslen(splashMessage));
         EndPaint(hWnd, &ps);
         break;
+    case WM_DESTROY:
+        return 0;
     case WM_OUTPUTMESSAGE:
         WCHAR* msg = (WCHAR*) wParam;
         wcscpy_s(splashMessage, msg);
