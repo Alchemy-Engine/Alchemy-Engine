@@ -1,2 +1,9 @@
+#cmakedefine DEBUG_FLAG   DEBUG
+#cmakedefine RELEASE_FLAG RELEASE
+
+#cmakedefine CLIENT CLIENT_MODE
+#cmakedefine EDITOR EDITOR_MODE
+#cmakedefine SERVER SERVER_MODE
+
 
 #define ENGINE_ROOT_DIR L"${ENGINE_ROOT_DIR}"
