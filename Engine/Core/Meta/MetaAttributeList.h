@@ -2,6 +2,7 @@
 
 #include <concepts>
 #include <tuple>
+#include "MetaElements.h"
 
 
 template<typename... TAttr>
@@ -9,15 +10,14 @@ class MetaAttributeList
 {
 public:
     constexpr MetaAttributeList(TAttr&&... attrs)
-        : Attributes(std::forward<TAttr>(attrs)...)
+        : AttributeList(std::forward<TAttr>(attrs)...)
     {}
 
-    template<typename Func>
-    constexpr void ForEach(Func&& func) const
+    template<typename Callable>
+    constexpr void ForEach(Callable&& func) const
     {
-        std::apply(
-            std::forward<Func>(func), Attributes);
+        AttributeList.template ForEach<Callable>(std::forward<Callable>(func));
     }
 
-    const std::tuple<TAttr...> Attributes;
+    MetaElements<TAttr...> AttributeList;
 };

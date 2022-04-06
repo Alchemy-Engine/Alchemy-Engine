@@ -8,8 +8,8 @@ template<typename T>
 class MetaAttribute
 {
 public:
-    constexpr MetaAttribute(std::string_view attr, T value)
-        : Name(attr), Value(value)
+    constexpr MetaAttribute(std::string_view attr, T&& value)
+        : Name(attr), Value(std::forward<T>(value))
     {}
 
     std::string_view Name;

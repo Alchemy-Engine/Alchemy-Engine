@@ -2,6 +2,7 @@
 
 #include <concepts>
 #include <tuple>
+#include "MetaElements.h"
 
 
 template<typename... TField>
@@ -9,14 +10,14 @@ class MetaFieldList
 {
 public:
     constexpr MetaFieldList(TField&&... fields)
-        : Fields(std::forward<TField>(fields)...)
+        : FieldList(std::forward<TField>(fields)...)
     {}
 
-    template<typename Func>
-    constexpr void ForEach(Func&& func) const
+    template<typename Callable>
+    constexpr void ForEach(Callable&& func) const
     {
-        std::apply(std::forward<Func>(func), Fields);
+        FieldList.template ForEach<Callable>(std::forward<Callable>(func));
     }
 
-    std::tuple<TField...> Fields;
+    MetaElements<TField...> FieldList;
 };
